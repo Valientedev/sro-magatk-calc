@@ -135,10 +135,10 @@
         <label>Mag Atk Buff <b><span id="a-pct-v">0</span> %</b></label>
         <div class="stepper">
           <button data-t="a" data-f="pct" data-d="-1">−</button>
-          <input id="a-pct" type="number" min="0" max="140" step="1" value="0">
+          <input id="a-pct" type="number" min="0" max="100" step="1" value="0">
           <button data-t="a" data-f="pct" data-d="1">+</button>
         </div>
-        <input id="a-pct-r" type="range" min="0" max="140" step="1" value="0">
+        <input id="a-pct-r" type="range" min="0" max="100" step="1" value="0">
       </div>
       <div class="readout"><div class="n" id="a-out">0</div><div class="lbl">Magical Attack</div></div>
     </div>
@@ -157,10 +157,10 @@
         <label>Mag Atk Buff <b><span id="b-pct-v">80</span> %</b></label>
         <div class="stepper">
           <button data-t="b" data-f="pct" data-d="-1">−</button>
-          <input id="b-pct" type="number" min="0" max="140" step="1" value="80">
+          <input id="b-pct" type="number" min="0" max="100" step="1" value="80">
           <button data-t="b" data-f="pct" data-d="1">+</button>
         </div>
-        <input id="b-pct-r" type="range" min="0" max="140" step="1" value="80">
+        <input id="b-pct-r" type="range" min="0" max="100" step="1" value="80">
       </div>
       <div class="readout"><div class="n" id="b-out">0</div><div class="lbl">Magical Attack</div></div>
     </div>
@@ -205,7 +205,7 @@
   function readVal(t, f){
     var raw = parseFloat(el(t+'-'+f).value);
     if (isNaN(raw)) raw = 0;
-    return f === 'plus' ? clamp(Math.round(raw), 0, 16) : clamp(raw, 0, 140);
+    return f === 'plus' ? clamp(Math.round(raw), 0, 16) : clamp(raw, 0, 100);
   }
 
   function render(){
@@ -233,7 +233,7 @@
     btn.addEventListener('click', function(){
       var t = btn.dataset.t, f = btn.dataset.f, dlt = parseInt(btn.dataset.d,10);
       var inp = el(t+'-'+f);
-      var lo = f==='plus'?0:0, hi = f==='plus'?16:140;
+      var lo = f==='plus'?0:0, hi = f==='plus'?16:100;
       inp.value = clamp((parseFloat(inp.value)||0)+dlt, lo, hi);
       render();
     });
